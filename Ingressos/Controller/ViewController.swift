@@ -80,6 +80,23 @@ class ViewController: UIViewController,PIckerViewMesSelecionado {
         //substitui teclado
         sender.inputView = pickerView
     }
+    
+    @IBAction func textFieldCodigoSeguranca(_ sender: UITextField) {
+        //verifica se contem texto
+        guard let texto = sender.text else{return}
+        //verifica qt de caracteres
+        if texto.count > 3 {
+            let codigo = texto.suffix(3)
+            self.buscaTextField(tipoDeTextField: .codigoDeSEguranca) { (codigoFieldTextSeguranca) in
+                codigoFieldTextSeguranca.text = String(codigo)
+            }
+        }
+        else{
+            self.buscaTextField(tipoDeTextField: .codigoDeSEguranca) { (codigoTextFieldSeguranca) in
+                codigoTextFieldSeguranca.text = texto
+            }
+        }
+    }
 }
 
 
